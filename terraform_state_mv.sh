@@ -9,12 +9,12 @@ DEST_RG=$1
 # e.g. terraform state mv module.api.azurerm_application_insights.appinsights azurerm_application_insights.appinsights
 DEST_APPINSIGHTS=${2-""}
 
-
-STORAGE_ACCOUNT_NAME=$3
-ENV=$4
-APP_FULLL_NAME=$5
-DEST_CONTAINER_NAME=$6
-SUBSCRIPTION=$7
+SOURCE_MODULE_NAME=$3
+STORAGE_ACCOUNT_NAME=$4
+ENV=$5
+APP_FULLL_NAME=$6
+DEST_CONTAINER_NAME=$7
+SUBSCRIPTION=$8
 
 TIMESTAMP=`date "+%Y%m%d"`
 
@@ -33,7 +33,7 @@ then
     echo -e "ERROR: Destination resource group should not be empty"
     usage
 else
-    terraform state mv module.api.azurerm_resource_group.rg azurerm_resource_group.${DEST_RG}
+    terraform state mv module.${SOURCE_MODULE_NAME}.azurerm_resource_group.rg azurerm_resource_group.${DEST_RG}
 fi
 
 if [ -z ${DEST_APPINSIGHTS} ]
@@ -41,5 +41,5 @@ then
     echo "App insights state not moved as destination App insights is empty."
     exit 0
 else
-    terraform state mv module.api.azurerm_application_insights.appinsights azurerm_application_insights.${DEST_APPINSIGHTS}
+    terraform state mv module.${SOURCE_MODULE_NAME}.azurerm_application_insights.appinsights azurerm_application_insights.${DEST_APPINSIGHTS}
 fi
