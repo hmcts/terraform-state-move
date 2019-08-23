@@ -7,7 +7,7 @@ DEST_RG=$1
 
 # Terraform resource name of the app insights block where you want to move your state to
 # e.g. terraform state mv module.api.azurerm_application_insights.appinsights azurerm_application_insights.appinsights
-DEST_APPINSIGHTS=${1-""}
+DEST_APPINSIGHTS=${2-""}
 
 
 STORAGE_ACCOUNT_NAME=$3
