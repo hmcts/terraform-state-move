@@ -24,7 +24,7 @@ env AZURE_CONFIG_DIR=/opt/jenkins/.azure-$SUBSCRIPTION az storage blob copy star
 sleep 15
 
 function usage() {
-  echo "usage: ./terraform_state_mv.sh <DEST_RG> <DEST_APPINSIGHTS> <STORAGE_ACCOUNT_NAME> <ENV> <APP_FULLL_NAME> <DEST_CONTAINER_NAME> <SUBSCRIPTION>"
+  echo "usage: ./terraform_state_mv.sh <DEST_RG> <DEST_APPINSIGHTS> <SOURCE_MODULE_NAME> <STORAGE_ACCOUNT_NAME> <ENV> <APP_FULLL_NAME> <DEST_CONTAINER_NAME> <SUBSCRIPTION>"
 }
 
 echo "Initiating terraform state move...."
